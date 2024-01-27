@@ -2,9 +2,9 @@ import os
 import pandas as pd
 from collections import Counter
 
-def list_files_and_word_frequency(target_directory):
+def list_files_and_word_freq(target_directory):
     file_paths = []
-    word_frequency = Counter()
+    word_freq = Counter()
 
     for root, _, files in os.walk(target_directory):
         for file in files:
@@ -27,20 +27,20 @@ def list_files_and_word_frequency(target_directory):
                         print(f"Failed to decode file '{file_path}' with encoding 'utf-8'.")
 
                 words = text.split()
-                word_frequency.update(words)
+                word_freq.update(words)
 
     print("List of file paths:")
     for path in file_paths:
         print(path)
 
     print("\nWord frequency for .xlsx and .txt files:")
-    for word, frequency in word_frequency.items():
+    for word, frequency in word_freq.items():
         print(f"{word}: {frequency}")
 
 target_directory = input("Enter the target directory path: ")
 
 if os.path.exists(target_directory) and os.path.isdir(target_directory):
-    list_files_and_word_frequency(target_directory)
+    list_files_and_word_freq(target_directory)
 else:
     print("Invalid directory path. Please provide a valid directory.")
 
