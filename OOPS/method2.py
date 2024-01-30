@@ -1,3 +1,8 @@
+@classmethod
+def showcount(cls):
+      print (cls.empCount)
+      
+Employee.showcount()
  @classmethod
    def showcount(cls):
          print (cls.empCount)
