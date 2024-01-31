@@ -1,22 +1,16 @@
 import os
 import pandas as pd
 from collections import Counter
-
 def process_file(file_path, word_freq):
-    try:
         if file_path.lower().endswith(('.xlsx', '.txt')):
             if file_path.lower().endswith('.xlsx'):
                 df = pd.read_excel(file_path)
                 text = ' '.join(map(str, df.values.flatten()))
             else:
-                with open(file_path, 'r', encoding='utf-8') as txt_file:
+                with open(file_path, 'r') as txt_file:
                     text = txt_file.read()
 
             word_freq.update(text.split())
-
-    except (pd.errors.EmptyDataError, UnicodeDecodeError):
-        print(f"Error processing file '{file_path}'.")
-
 def list_files(target_directory):
     file_paths = []
     word_freq = Counter()
